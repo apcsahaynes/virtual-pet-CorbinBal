@@ -17,15 +17,15 @@
 // OPTION B SETUP  (comment out if using Option A)
 // =============================================
 
-// ArrayList<PImage> petImages;   // one image per mood/state
+ ArrayList<PImage> petImages;   // one image per mood/state
 
-// void loadPetImages() {
-//   petImages = new ArrayList<PImage>();
-//   petImages.add(loadImage("neutral.png"));  // index 0 - neutral
-//   petImages.add(loadImage("happy.png"));    // index 1 - happy
-//   petImages.add(loadImage("sad.png"));      // index 2 - sad
+ void loadPetImages() {
+   petImages = new ArrayList<PImage>();
+   petImages.add(loadImage("neutral.png"));  // index 0 - neutral
+   petImages.add(loadImage("happy.png"));    // index 1 - happy
+   petImages.add(loadImage("sad.png"));      // index 2 - sad
 //   // add more as needed!
-// }
+ }
 //
 // Call loadPetImages() at the end of setup() in VirtualPet.pde
 
@@ -61,7 +61,7 @@ void drawPetGraphic() {
   // Body
   fill(170, 210, 255);
   noStroke();
-  ellipse(210, 220, 140, 120);
+  ellipse(210, 220, 140+(myPet.getWeight()*10), 120);
 
   // Head
   fill(170, 210, 255);
@@ -106,12 +106,12 @@ void drawPetGraphic() {
   // Uncomment and adjust once images are loaded.
   // =============================================
 
-  // Choose which image based on pet state:
-  // int index = 0; // neutral default
-  // if (myPet.getEnergyLevel() >= 5 && myPet.getHappinessLevel() >= 5) {
-  //   index = 1; // happy
-  // } else if (myPet.getHappinessLevel() == 0) {
-  //   index = 2; // sad
-  // }
-  // image(petImages.get(index), 60, 60, 300, 300);
+
+   int index = 0; // neutral default
+   if (myPet.getEnergyLevel() >= 5 && myPet.getHappinessLevel() >= 5) {
+     index = 1; // happy
+   } else if (myPet.getHappinessLevel() == 0) {
+     index = 2; // sad
+   }
+   image(petImages.get(index), 60, 60, 300, 300);
 }
